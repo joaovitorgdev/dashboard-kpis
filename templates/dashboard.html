@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard — KPIs{% endblock %}
+
+{% block content %}
+<header class="topbar">
+    <div class="topbar-left">
+        <h1>Dashboard Analítico de KPIs</h1>
+        <span class="user-badge">Olá, {{ username }}</span>
+    </div>
+    <div class="topbar-right">
+        <span id="atualizado-em" class="update-time"></span>
+        <a href="{{ url_for('logout') }}" class="btn btn-outline">Sair</a>
+    </div>
+</header>
+
+<main class="dashboard">
+    <section class="filters-panel">
+        <h2>Filtros</h2>
+        <div class="filters-grid">
+            <div class="filter-group">
+                <label>Data início</label>
+                <input type="date" id="data_inicio" value="{{ opcoes.data_min }}">
+            </div>
+            <div class="filter-group">
+                <label>Data fim</label>
+                <input type="date" id="data_fim" value="{{ opcoes.data_max }}">
+            </div>
+            <div class="filter-group">
+                <label>Região</label>
+                <select id="regiao">
+                    <option value="todas">Todas</option>
+                    {% for r in opcoes.regioes %}
+                    <option value="{{ r }}">{{ r }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Categoria</label>
+                <select id="categoria">
+                    <option value="todas">Todas</option>
+                    {% for c in opcoes.categorias %}
+                    <option value="{{ c }}">{{ c }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Status</label>
+                <select id="status">
+                    <option value="todos">Todos</option>
+                    {% for s in opcoes.status_list %}
+                    <option value="{{ s }}">{{ s }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Vendedor</label>
+                <select id="vendedor">
+                    <option value="todos">Todos</option>
+                    {% for v in opcoes.vendedores %}
+                    <option value="{{ v }}">{{ v }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="filter-actions">
+            <button id="btn-filtrar" class="btn btn-primary">Aplicar filtros</button>
+            <button id="btn-limpar" class="btn btn-outline">Limpar</button>
+            <button id="btn-pdf" class="btn btn-success">Exportar PDF</button>
+        </div>
+    </section>
+
+    <section class="kpi-cards" id="kpi-cards">
+        <div class="kpi-card">
+            <span class="kpi-label">Receita Total</span>
+            <span class="kpi-value" id="kpi-receita">—</span>
+        </div>
+        <div class="kpi-card">
+            <span class="kpi-label">Lucro Total</span>
+            <span class="kpi-value" id="kpi-lucro">—</span>
+        </div>
+        <div class="kpi-card">
+            <span class="kpi-label">Margem Média</span>
+            <span class="kpi-value" id="kpi-margem">—</span>
+        </div>
+        <div class="kpi-card">
+            <span class="kpi-label">Qtd. Vendas</span>
+            <span class="kpi-value" id="kpi-qtd">—</span>
+        </div>
+        <div class="kpi-card">
+            <span class="kpi-label">Ticket Médio</span>
+            <span class="kpi-value" id="kpi-ticket">—</span>
+        </div>
+        <div class="kpi-card">
+            <span class="kpi-label">Taxa Conclusão</span>
+            <span class="kpi-value" id="kpi-taxa">—</span>
+        </div>
+    </section>
+
+    <section class="charts-grid">
+        <div class="chart-box chart-wide">
+            <h3>Receita e Lucro por Mês</h3>
+            <canvas id="chart-mes"></canvas>
+        </div>
+        <div class="chart-box">
+            <h3>Receita por Região</h3>
+            <canvas id="chart-regiao"></canvas>
+        </div>
+        <div class="chart-box">
+            <h3>Receita por Categoria</h3>
+            <canvas id="chart-categoria"></canvas>
+        </div>
+        <div class="chart-box">
+            <h3>Top Vendedores</h3>
+            <canvas id="chart-vendedores"></canvas>
+        </div>
+    </section>
+
+    <section class="table-section">
+        <h3>Últimas vendas</h3>
+        <div class="table-wrap">
+            <table id="tabela-vendas">
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Região</th>
+                        <th>Categoria</th>
+                        <th>Produto</th>
+                        <th>Vendedor</th>
+                        <th>Qtd</th>
+                        <th>Receita</th>
+                        <th>Lucro</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </section>
+</main>
+
+<script>
+    window.FILTER_DEFAULTS = {
+        data_min: "{{ opcoes.data_min }}",
+        data_max: "{{ opcoes.data_max }}"
+    };
+</script>
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

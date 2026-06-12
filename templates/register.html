@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Cadastro — Dashboard KPIs{% endblock %}
+
+{% block content %}
+<div class="auth-page">
+    <div class="auth-card">
+        <div class="auth-header">
+            <h1>Criar conta</h1>
+            <p>Cadastre-se para acessar o dashboard</p>
+        </div>
+
+        <form method="POST" class="auth-form">
+            <label for="username">Usuário</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Senha</label>
+            <input type="password" id="password" name="password" minlength="6" required>
+
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </form>
+
+        <p class="auth-footer">
+            Já tem conta? <a href="{{ url_for('login') }}">Fazer login</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

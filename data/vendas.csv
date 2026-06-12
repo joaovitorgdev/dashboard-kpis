@@ -1,0 +1,85 @@
+data,regiao,categoria,produto,vendedor,quantidade,valor_unitario,custo_unitario,status
+2024-01-05,Sudeste,Eletrônicos,Notebook Pro,Silva,3,4500.00,3200.00,Concluído
+2024-01-08,Nordeste,Móveis,Cadeira Ergo,Santos,12,890.00,520.00,Concluído
+2024-01-12,Sul,Eletrônicos,Monitor 27,Costa,8,1200.00,780.00,Concluído
+2024-01-15,Sudeste,Software,Licença Office,Lima,25,350.00,120.00,Concluído
+2024-01-18,Norte,Serviços,Consultoria TI,Oliveira,1,8500.00,4000.00,Concluído
+2024-01-22,Centro-Oeste,Móveis,Mesa Escritório,Ferreira,5,2100.00,1400.00,Pendente
+2024-01-25,Sudeste,Eletrônicos,Tablet 10,Ribeiro,15,980.00,650.00,Concluído
+2024-02-02,Nordeste,Software,Antivírus Corp,Alves,40,180.00,45.00,Concluído
+2024-02-06,Sul,Móveis,Armário Arquivo,Martins,4,1650.00,1100.00,Concluído
+2024-02-10,Sudeste,Serviços,Suporte Mensal,Pereira,6,2200.00,900.00,Concluído
+2024-02-14,Norte,Eletrônicos,Impressora Laser,Carvalho,7,890.00,580.00,Cancelado
+2024-02-18,Centro-Oeste,Software,CRM Básico,Gomes,10,1200.00,400.00,Concluído
+2024-02-22,Sudeste,Móveis,Cadeira Ergo,Silva,20,890.00,520.00,Concluído
+2024-02-26,Nordeste,Eletrônicos,Notebook Pro,Santos,2,4500.00,3200.00,Concluído
+2024-03-01,Sul,Serviços,Treinamento,Costa,3,3500.00,1500.00,Concluído
+2024-03-05,Sudeste,Eletrônicos,Monitor 27,Lima,10,1200.00,780.00,Concluído
+2024-03-09,Norte,Móveis,Mesa Escritório,Oliveira,8,2100.00,1400.00,Concluído
+2024-03-13,Centro-Oeste,Software,Licença Office,Ferreira,30,350.00,120.00,Pendente
+2024-03-17,Sudeste,Serviços,Consultoria TI,Ribeiro,2,8500.00,4000.00,Concluído
+2024-03-21,Nordeste,Eletrônicos,Tablet 10,Alves,18,980.00,650.00,Concluído
+2024-03-25,Sul,Móveis,Armário Arquivo,Martins,6,1650.00,1100.00,Concluído
+2024-04-02,Sudeste,Software,Antivírus Corp,Pereira,55,180.00,45.00,Concluído
+2024-04-06,Norte,Eletrônicos,Impressora Laser,Carvalho,5,890.00,580.00,Concluído
+2024-04-10,Centro-Oeste,Serviços,Suporte Mensal,Gomes,8,2200.00,900.00,Concluído
+2024-04-14,Sudeste,Móveis,Cadeira Ergo,Silva,14,890.00,520.00,Concluído
+2024-04-18,Nordeste,Eletrônicos,Notebook Pro,Santos,4,4500.00,3200.00,Concluído
+2024-04-22,Sul,Software,CRM Básico,Costa,12,1200.00,400.00,Cancelado
+2024-04-26,Sudeste,Serviços,Treinamento,Lima,5,3500.00,1500.00,Concluído
+2024-05-03,Norte,Móveis,Mesa Escritório,Oliveira,3,2100.00,1400.00,Concluído
+2024-05-07,Centro-Oeste,Eletrônicos,Monitor 27,Ferreira,9,1200.00,780.00,Concluído
+2024-05-11,Sudeste,Software,Licença Office,Ribeiro,35,350.00,120.00,Concluído
+2024-05-15,Nordeste,Serviços,Consultoria TI,Alves,1,8500.00,4000.00,Pendente
+2024-05-19,Sul,Eletrônicos,Tablet 10,Martins,22,980.00,650.00,Concluído
+2024-05-23,Sudeste,Móveis,Armário Arquivo,Pereira,7,1650.00,1100.00,Concluído
+2024-05-27,Norte,Software,Antivírus Corp,Carvalho,48,180.00,45.00,Concluído
+2024-06-01,Centro-Oeste,Eletrônicos,Impressora Laser,Gomes,6,890.00,580.00,Concluído
+2024-06-05,Sudeste,Serviços,Suporte Mensal,Silva,10,2200.00,900.00,Concluído
+2024-06-09,Nordeste,Móveis,Cadeira Ergo,Santos,16,890.00,520.00,Concluído
+2024-06-13,Sul,Eletrônicos,Notebook Pro,Costa,3,4500.00,3200.00,Concluído
+2024-06-17,Sudeste,Software,CRM Básico,Lima,15,1200.00,400.00,Concluído
+2024-06-21,Norte,Serviços,Treinamento,Oliveira,4,3500.00,1500.00,Concluído
+2024-06-25,Centro-Oeste,Móveis,Mesa Escritório,Ferreira,5,2100.00,1400.00,Concluído
+2024-07-02,Sudeste,Eletrônicos,Monitor 27,Ribeiro,11,1200.00,780.00,Concluído
+2024-07-06,Nordeste,Software,Licença Office,Alves,28,350.00,120.00,Concluído
+2024-07-10,Sul,Serviços,Consultoria TI,Martins,2,8500.00,4000.00,Concluído
+2024-07-14,Sudeste,Eletrônicos,Tablet 10,Pereira,19,980.00,650.00,Cancelado
+2024-07-18,Norte,Móveis,Armário Arquivo,Carvalho,4,1650.00,1100.00,Concluído
+2024-07-22,Centro-Oeste,Software,Antivírus Corp,Gomes,42,180.00,45.00,Concluído
+2024-07-26,Sudeste,Serviços,Suporte Mensal,Silva,7,2200.00,900.00,Concluído
+2024-08-01,Nordeste,Eletrônicos,Impressora Laser,Santos,8,890.00,580.00,Concluído
+2024-08-05,Sul,Móveis,Cadeira Ergo,Costa,13,890.00,520.00,Concluído
+2024-08-09,Sudeste,Eletrônicos,Notebook Pro,Lima,5,4500.00,3200.00,Concluído
+2024-08-13,Norte,Software,CRM Básico,Oliveira,9,1200.00,400.00,Concluído
+2024-08-17,Centro-Oeste,Serviços,Treinamento,Ferreira,3,3500.00,1500.00,Pendente
+2024-08-21,Sudeste,Móveis,Mesa Escritório,Ribeiro,6,2100.00,1400.00,Concluído
+2024-08-25,Nordeste,Eletrônicos,Monitor 27,Alves,7,1200.00,780.00,Concluído
+2024-09-02,Sul,Software,Licença Office,Martins,32,350.00,120.00,Concluído
+2024-09-06,Sudeste,Serviços,Consultoria TI,Pereira,1,8500.00,4000.00,Concluído
+2024-09-10,Norte,Eletrônicos,Tablet 10,Carvalho,14,980.00,650.00,Concluído
+2024-09-14,Centro-Oeste,Móveis,Armário Arquivo,Gomes,5,1650.00,1100.00,Concluído
+2024-09-18,Sudeste,Software,Antivírus Corp,Silva,50,180.00,45.00,Concluído
+2024-09-22,Nordeste,Serviços,Suporte Mensal,Santos,9,2200.00,900.00,Concluído
+2024-09-26,Sul,Eletrônicos,Impressora Laser,Costa,4,890.00,580.00,Concluído
+2024-10-01,Sudeste,Móveis,Cadeira Ergo,Lima,18,890.00,520.00,Concluído
+2024-10-05,Norte,Eletrônicos,Notebook Pro,Oliveira,2,4500.00,3200.00,Concluído
+2024-10-09,Centro-Oeste,Software,CRM Básico,Ferreira,11,1200.00,400.00,Concluído
+2024-10-13,Sudeste,Serviços,Treinamento,Ribeiro,6,3500.00,1500.00,Concluído
+2024-10-17,Nordeste,Móveis,Mesa Escritório,Alves,4,2100.00,1400.00,Concluído
+2024-10-21,Sul,Eletrônicos,Monitor 27,Martins,12,1200.00,780.00,Concluído
+2024-10-25,Sudeste,Software,Licença Office,Pereira,38,350.00,120.00,Concluído
+2024-11-02,Norte,Serviços,Consultoria TI,Carvalho,1,8500.00,4000.00,Concluído
+2024-11-06,Centro-Oeste,Eletrônicos,Tablet 10,Gomes,16,980.00,650.00,Concluído
+2024-11-10,Sudeste,Móveis,Armário Arquivo,Silva,8,1650.00,1100.00,Concluído
+2024-11-14,Nordeste,Software,Antivírus Corp,Santos,45,180.00,45.00,Concluído
+2024-11-18,Sul,Serviços,Suporte Mensal,Costa,11,2200.00,900.00,Concluído
+2024-11-22,Sudeste,Eletrônicos,Impressora Laser,Lima,6,890.00,580.00,Cancelado
+2024-11-26,Norte,Móveis,Cadeira Ergo,Oliveira,10,890.00,520.00,Concluído
+2024-12-02,Centro-Oeste,Eletrônicos,Notebook Pro,Ferreira,3,4500.00,3200.00,Concluído
+2024-12-06,Sudeste,Software,CRM Básico,Ribeiro,14,1200.00,400.00,Concluído
+2024-12-10,Nordeste,Serviços,Treinamento,Alves,2,3500.00,1500.00,Concluído
+2024-12-14,Sul,Móveis,Mesa Escritório,Martins,7,2100.00,1400.00,Concluído
+2024-12-18,Sudeste,Eletrônicos,Monitor 27,Pereira,9,1200.00,780.00,Concluído
+2024-12-22,Norte,Software,Licença Office,Carvalho,27,350.00,120.00,Pendente
+2024-12-26,Centro-Oeste,Serviços,Consultoria TI,Gomes,1,8500.00,4000.00,Concluído

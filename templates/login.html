@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Login — Dashboard KPIs{% endblock %}
+
+{% block content %}
+<div class="auth-page">
+    <div class="auth-card">
+        <div class="auth-header">
+            <h1>Dashboard Analítico</h1>
+            <p>Indicadores de desempenho em tempo real</p>
+        </div>
+
+        <form method="POST" class="auth-form">
+            <label for="username">Usuário</label>
+            <input type="text" id="username" name="username" placeholder="seu usuario" required>
+
+            <label for="password">Senha</label>
+            <input type="password" id="password" name="password" placeholder="••••••" required>
+
+            <button type="submit" class="btn btn-primary">Entrar</button>
+        </form>
+
+        <p class="auth-footer">
+            Não tem conta? <a href="{{ url_for('register') }}">Criar conta</a>
+        </p>
+
+        <p class="auth-hint">Demo: admin / admin123</p>
+    </div>
+</div>
+{% endblock %}
