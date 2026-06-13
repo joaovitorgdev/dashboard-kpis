@@ -1,6 +1,7 @@
 import os
 from datetime import datetime
 
+from dotenv import load_dotenv
 from flask import (
     Flask,
     flash,
@@ -13,7 +14,9 @@ from flask import (
     url_for,
 )
 
-from config import SECRET_KEY
+load_dotenv()
+
+from config import ALLOW_REGISTRATION, DEBUG, IS_PRODUCTION, PORT, SECRET_KEY
 from utils.auth import init_users, login_required, register_user, verify_user
 from utils.data_loader import (
     apply_filters,
@@ -32,10 +35,15 @@ from utils.pdf_export import gerar_pdf
 app = Flask(__name__)
 app.secret_key = SECRET_KEY
 
+# cookies de sessao mais seguros fora do debug
+app.config["SESSION_COOKIE_HTTPONLY"] = True
+app.config["SESSION_COOKIE_SAMESITE"] = "Lax"
+if IS_PRODUCTION:
+    app.config["SESSION_COOKIE_SECURE"] = True
+
 
 @app.before_request
 def init_app():
-    # roda setup uma vez por processo (funciona ok pra dev)
     if not getattr(app, "_db_ready", False):
         setup_database()
         init_users()
@@ -59,16 +67,21 @@ def login():
         if user:
             session["user_id"] = user["id"]
             session["username"] = user["username"]
+            session.permanent = True
             flash("Login ok!", "success")
             return redirect(url_for("dashboard"))
 
         flash("Usuario ou senha invalidos.", "error")
 
-    return render_template("login.html")
+    return render_template("login.html", allow_registration=ALLOW_REGISTRATION)
 
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    if not ALLOW_REGISTRATION:
+        flash("Cadastro desabilitado.", "error")
+        return redirect(url_for("login"))
+
     if request.method == "POST":
         username = request.form.get("username", "").strip()
         password = request.form.get("password", "")
@@ -154,5 +167,4 @@ def export_pdf():
 
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    app.run(debug=True, host="0.0.0.0", port=port)
+    app.run(debug=DEBUG, host="0.0.0.0", port=PORT)

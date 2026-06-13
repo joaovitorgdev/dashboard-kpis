@@ -12,20 +12,18 @@ Dashboard web para visualização de indicadores de desempenho a partir de dados
 
 ## Funcionalidades
 
-- Login e cadastro de usuários
+- Login de usuários (cadastro opcional)
 - KPIs: receita, lucro, margem, ticket médio, taxa de conclusão
 - Gráficos: evolução mensal, receita por região/categoria, top vendedores
 - Filtros dinâmicos por data, região, categoria, status e vendedor
 - Exportação do relatório em PDF
 
-## Como rodar
+## Desenvolvimento local
 
 ```bash
-# clone o repo
-git clone https://github.com/SEU_USUARIO/dashboard-kpis.git
+git clone https://github.com/joaovitorgdev/dashboard-kpis.git
 cd dashboard-kpis
 
-# ambiente virtual
 python -m venv venv
 
 # Windows
@@ -34,49 +32,78 @@ venv\Scripts\activate
 # Linux/Mac
 source venv/bin/activate
 
-# dependências
 pip install -r requirements.txt
 
-# iniciar
+# copie e ajuste se quiser
+copy .env.example .env   # Windows
+# cp .env.example .env   # Linux/Mac
+
 python app.py
 ```
 
 Acesse: **http://localhost:5000**
 
-**Login demo:** `admin` / `admin123`
+No modo desenvolvimento, o cadastro fica aberto e um usuário inicial é criado automaticamente (veja `.env.example`).
+
+## Deploy em produção
+
+### Variáveis obrigatórias
+
+| Variável | Valor recomendado |
+|----------|-------------------|
+| `FLASK_ENV` | `production` |
+| `FLASK_DEBUG` | `0` |
+| `SECRET_KEY` | chave aleatória longa |
+| `DEFAULT_USER` | seu usuário admin |
+| `DEFAULT_PASS` | senha forte (só na 1ª subida) |
+| `ALLOW_REGISTRATION` | `0` |
+| `CREATE_DEFAULT_USER` | `1` na 1ª subida, depois `0` |
+
+Gere uma chave segura:
+
+```bash
+python -c "import secrets; print(secrets.token_hex(32))"
+```
+
+### Render / Railway
+
+1. Conecte o repositório GitHub
+2. Build: `pip install -r requirements.txt -r requirements-prod.txt`
+3. Start: `gunicorn app:app --bind 0.0.0.0:$PORT` (ou use o `Procfile`)
+4. Configure as variáveis de ambiente acima
+5. Após o primeiro login, defina `CREATE_DEFAULT_USER=0` para não recriar admin
+
+### Segurança em produção
+
+- Cadastro público desligado por padrão
+- `debug` desligado
+- Cookies de sessão com `Secure` e `HttpOnly`
+- Sem credenciais demo na interface
+- `SECRET_KEY` obrigatória — app não sobe sem ela
 
 ## Estrutura do projeto
 
 ```
-├── app.py                 # aplicação Flask
-├── config.py              # configurações
-├── data/vendas.csv        # dados de exemplo
-├── database/init_db.sql   # schema SQL
-├── utils/                 # auth, dados, PDF
-├── templates/             # páginas HTML
-└── static/                # CSS e JavaScript
+├── app.py
+├── config.py
+├── .env.example
+├── Procfile
+├── data/vendas.csv
+├── database/init_db.sql
+├── utils/
+├── templates/
+└── static/
 ```
 
 ## API
 
 | Endpoint | Descrição |
 |----------|-----------|
-| `GET /api/kpis` | Retorna KPIs, gráficos e tabela (aceita filtros via query string) |
-| `GET /api/export/pdf` | Exporta relatório PDF com os filtros aplicados |
+| `GET /api/kpis` | KPIs, gráficos e tabela (filtros via query string) |
+| `GET /api/export/pdf` | Exporta relatório PDF |
 
-### Filtros disponíveis
-
-`data_inicio`, `data_fim`, `regiao`, `categoria`, `status`, `vendedor`
+Filtros: `data_inicio`, `data_fim`, `regiao`, `categoria`, `status`, `vendedor`
 
 ## Trocar os dados
 
-Edite `data/vendas.csv` e delete `instance/app.db` para forçar reimportação na próxima execução.
-
-## Variáveis de ambiente (opcional)
-
-```env
-SECRET_KEY=sua-chave-secreta
-DEFAULT_USER=admin
-DEFAULT_PASS=admin123
-PORT=5000
-```
+Edite `data/vendas.csv` e delete `instance/app.db` para reimportar na próxima execução.

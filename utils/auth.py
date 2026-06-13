@@ -4,7 +4,7 @@ from functools import wraps
 from flask import redirect, session, url_for
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from config import DATABASE, DEFAULT_PASS, DEFAULT_USER
+from config import CREATE_DEFAULT_USER, DATABASE, DEFAULT_PASS, DEFAULT_USER
 
 
 def get_db():
@@ -28,14 +28,15 @@ def init_users():
         """
     )
 
-    # garante admin pra primeiro acesso
-    row = cur.execute("SELECT id FROM users WHERE username = ?", (DEFAULT_USER,)).fetchone()
-    if not row:
-        pwd = generate_password_hash(DEFAULT_PASS)
-        cur.execute(
-            "INSERT INTO users (username, password_hash) VALUES (?, ?)",
-            (DEFAULT_USER, pwd),
-        )
+    # usuario padrao so quando CREATE_DEFAULT_USER estiver ligado
+    if CREATE_DEFAULT_USER and DEFAULT_PASS:
+        row = cur.execute("SELECT id FROM users WHERE username = ?", (DEFAULT_USER,)).fetchone()
+        if not row:
+            pwd = generate_password_hash(DEFAULT_PASS)
+            cur.execute(
+                "INSERT INTO users (username, password_hash) VALUES (?, ?)",
+                (DEFAULT_USER, pwd),
+            )
 
     conn.commit()
     conn.close()

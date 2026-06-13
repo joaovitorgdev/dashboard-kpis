@@ -20,11 +20,11 @@
             <button type="submit" class="btn btn-primary">Entrar</button>
         </form>
 
+        {% if allow_registration %}
         <p class="auth-footer">
             Não tem conta? <a href="{{ url_for('register') }}">Criar conta</a>
         </p>
-
-        <p class="auth-hint">Demo: admin / admin123</p>
+        {% endif %}
     </div>
 </div>
 {% endblock %}
